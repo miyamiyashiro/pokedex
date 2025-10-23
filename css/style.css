@@ -1,13 +1,13 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: pink;
     text-align: center;
     margin: 0;
     padding: 0;
   }
   
   header {
-    background-color: #ef5350;
+    background-color: violet;
     color: white;
     padding: 15px 0;
   }
@@ -35,4 +35,61 @@ body {
     width: 200px;
     text-align: center;
   }
+  
+  #pokemon-search {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 250px;
+  }
+  
+  #search-btn {
+    background-color: pink;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  #search-btn:hover {
+    background-color: #d32f2f;
+  }
+
+  .pokemon-detail-container {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  #back-btn {
+    background-color: #ef5350;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #back-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .pokemon-detail-card {
+    display: inline-block;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 300px;
+    margin-top: 20px;
+  }
+  
+  .pokemon-detail-card img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  
   

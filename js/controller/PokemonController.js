@@ -2,29 +2,48 @@ import { PokemonService } from "../service/PokemonService.js";
 
 export class PokemonController {
   static async init() {
-    this.loadPokemonList();
     this.addSearchEvent();
+    this.loadPokemonList();
   }
 
   static async loadPokemonList() {
     const container = document.getElementById("pokemon-list");
     container.innerHTML = "";
 
-    const list = await PokemonService.getPokemonList();
-    for (const item of list) {
-      const pokemon = await PokemonService.getPokemonByName(item.name);
-      container.appendChild(this.createCard(pokemon));
+    try {
+      const list = await PokemonService.getPokemonList();
+      for (const item of list) {
+        const pokemon = await PokemonService.getPokemonByName(item.name);
+        const card = this.createCard(pokemon);
+        container.appendChild(card);
+      }
+    } catch (error) {
+      console.error("Erro ao carregar pokémons:", error);
     }
   }
 
-  static async searchPokemon() {
+  static addSearchEvent() {
+    const btn = document.getElementById("search-btn");
     const input = document.getElementById("pokemon-search");
-    const name = input.value.trim();
-    if (!name) return alert("Digite o nome de um Pokémon!");
+
+    btn.addEventListener("click", () => this.searchPokemon());
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") this.searchPokemon();
+    });
+  }
+
+  static async searchPokemon() {
+    const container = document.getElementById("pokemon-list");
+    const input = document.getElementById("pokemon-search");
+    const name = input.value.trim().toLowerCase();
+
+    if (!name) {
+      alert("Digite o nome de um Pokémon!");
+      return;
+    }
 
     try {
       const pokemon = await PokemonService.getPokemonByName(name);
-      const container = document.getElementById("pokemon-list");
       container.innerHTML = "";
       container.appendChild(this.createCard(pokemon));
     } catch {
@@ -32,21 +51,36 @@ export class PokemonController {
     }
   }
 
-  static addSearchEvent() {
-    document.getElementById("search-btn").addEventListener("click", () => {
-      this.searchPokemon();
-    });
-  }
-
   static createCard(pokemon) {
     const template = document.getElementById("pokemon-card-template");
     const card = template.content.cloneNode(true);
+    const cardElement = card.querySelector(".pokemon-card");
 
-    card.querySelector(".pokemon-image").src = pokemon.image;
-    card.querySelector(".pokemon-name").textContent = pokemon.name;
-    card.querySelector(".pokemon-type").textContent = `Tipo: ${pokemon.types}`;
-    card.querySelector(".pokemon-stats").textContent = pokemon.stats;
+    // Define imagem e nome
+    cardElement.querySelector(".pokemon-image").src = pokemon.image;
+    cardElement.querySelector(".pokemon-name").textContent = pokemon.name;
 
-    return card;
+    // Esconde os detalhes por padrão
+    const type = cardElement.querySelector(".pokemon-type");
+    const stats = cardElement.querySelector(".pokemon-stats");
+    type.style.display = "none";
+    stats.style.display = "none";
+
+    // Ao clicar, alterna visibilidade das infos
+    cardElement.addEventListener("click", () => {
+      const isHidden = type.style.display === "none";
+      type.style.display = isHidden ? "block" : "none";
+      stats.style.display = isHidden ? "block" : "none";
+        window.location.href = `pokemon.html?name=${pokemon.name}`;
+      });
+      
+
+
+    // Define o texto das infos
+    type.textContent = `Tipo: ${pokemon.types}`;
+    stats.textContent = pokemon.stats;
+
+    return cardElement;
   }
 }
+
