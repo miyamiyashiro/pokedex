@@ -6,6 +6,7 @@ export class PokemonController {
     this.loadPokemonList();
   }
 
+
   static async loadPokemonList() {
     const container = document.getElementById("pokemon-list");
     container.innerHTML = "";
@@ -56,17 +57,16 @@ export class PokemonController {
     const card = template.content.cloneNode(true);
     const cardElement = card.querySelector(".pokemon-card");
 
-    // Define imagem e nome
     cardElement.querySelector(".pokemon-image").src = pokemon.image;
     cardElement.querySelector(".pokemon-name").textContent = pokemon.name;
 
-    // Esconde os detalhes por padrão
+
     const type = cardElement.querySelector(".pokemon-type");
     const stats = cardElement.querySelector(".pokemon-stats");
     type.style.display = "none";
     stats.style.display = "none";
 
-    // Ao clicar, alterna visibilidade das infos
+
     cardElement.addEventListener("click", () => {
       const isHidden = type.style.display === "none";
       type.style.display = isHidden ? "block" : "none";
@@ -76,7 +76,7 @@ export class PokemonController {
       
 
 
-    // Define o texto das infos
+
     type.textContent = `Tipo: ${pokemon.types}`;
     stats.textContent = pokemon.stats;
 

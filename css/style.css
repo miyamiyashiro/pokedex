@@ -8,7 +8,7 @@ body {
   
   header {
     background-color: violet;
-    color: white;
+    color: black;
     padding: 15px 0;
   }
   
@@ -28,7 +28,7 @@ body {
   }
   
   .pokemon-card {
-    background: white;
+    background: rgb(163, 210, 235);;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 10px #ccc;
@@ -53,7 +53,7 @@ body {
   }
   
   #search-btn:hover {
-    background-color: #d32f2f;
+    background-color: rgb(75, 165, 213);
   }
 
   .pokemon-detail-container {
@@ -62,7 +62,7 @@ body {
   }
   
   #back-btn {
-    background-color: #ef5350;
+    background-color: violet;
     color: white;
     border: none;
     border-radius: 8px;
@@ -72,12 +72,12 @@ body {
   }
   
   #back-btn:hover {
-    background-color: #d32f2f;
+    background-color: rgb(75, 165, 213);
   }
   
   .pokemon-detail-card {
     display: inline-block;
-    background-color: white;
+    background-color: rgb(163, 210, 235);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
