@@ -28,7 +28,7 @@ body {
   }
   
   .pokemon-card {
-    background: rgb(163, 210, 235);;
+    background: rgb(163, 210, 235);
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 10px #ccc;
@@ -53,7 +53,7 @@ body {
   }
   
   #search-btn:hover {
-    background-color: rgb(219,112,147);
+    background-color: #DB7093;
   }
 
   .pokemon-detail-container {
