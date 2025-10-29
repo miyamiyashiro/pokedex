@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     container.innerHTML = "<p>Erro ao carregar informações do Pokémon.</p>";
   }
 
-  // botão de voltar
+
   document.getElementById("back-btn").addEventListener("click", () => {
     window.location.href = "index.html";
   });
