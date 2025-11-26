@@ -11,7 +11,7 @@ export class PokemonService {
 
   static async getPokemonByName(name) {
     const response = await fetch(`${BASE_URL}${name.toLowerCase()}`);
-    if (!response.ok) throw new Error("Não tem esse Pokemon não");
+    if (!response.ok) throw new Error("Pokémon não encontrado!");
     const data = await response.json();
 
     const types = data.types.map(t => t.type.name).join(", ");
